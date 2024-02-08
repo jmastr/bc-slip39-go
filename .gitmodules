@@ -1,0 +1,9 @@
+[submodule "blockchaincommons/bc-crypto-base"]
+	path = blockchaincommons/bc-crypto-base
+	url = https://github.com/blockchaincommons/bc-crypto-base.git
+[submodule "blockchaincommons/bc-shamir"]
+	path = blockchaincommons/bc-shamir
+	url = https://github.com/blockchaincommons/bc-shamir.git
+[submodule "blockchaincommons/bc-slip39"]
+	path = blockchaincommons/bc-slip39
+	url = https://github.com/blockchaincommons/bc-slip39.git

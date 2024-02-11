@@ -1,6 +1,7 @@
 package slip39
 
 // #include <stdint.h>
+// #include <sys/random.h>
 //
 // // Clearly not random. Only use for tests.
 // void fake_random(uint8_t *buf, size_t count, void* ctx) {
@@ -9,6 +10,11 @@ package slip39
 //   buf[i] = b;
 //   b = b + 17;
 //  }
+// }
+//
+// // Call libc to get random data for cryptographic purposes.
+// void real_random(uint8_t *buf, size_t count, void* ctx) {
+//  getrandom(buf, count, 0);
 // }
 import "C"
 
@@ -21,4 +27,9 @@ var ErrInvalidLength = errors.New("invalid length")
 // FakeRandom returns `fake_random` C function.
 func FakeRandom() (fakeRandom *[0]byte) {
 	return (*[0]byte)(C.fake_random)
+}
+
+// Random returns `real_random` C function.
+func Random() (random *[0]byte) {
+	return (*[0]byte)(C.real_random)
 }

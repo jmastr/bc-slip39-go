@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	slip39 "github.com/jmastr/bc-slip39-go"
+	slip39 "github.com/rddl-network/bc-slip39-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	slip39 "github.com/jmastr/bc-slip39-go"
+	slip39 "github.com/rddl-network/bc-slip39-go"
 )
 
 func main() {

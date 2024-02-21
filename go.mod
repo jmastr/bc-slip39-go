@@ -1,4 +1,4 @@
-module github.com/jmastr/bc-slip39-go
+module github.com/rddl-network/bc-slip39-go
 
 go 1.21.5
 

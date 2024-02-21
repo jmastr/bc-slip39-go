@@ -1,6 +1,9 @@
 package slip39
 
+// #include <errno.h>
 // #include <stdint.h>
+// #include <stdio.h>
+// #include <string.h>
 // #include <sys/random.h>
 //
 // // Clearly not random. Only use for tests.
@@ -14,7 +17,9 @@ package slip39
 //
 // // Call libc to get random data for cryptographic purposes.
 // void real_random(uint8_t *buf, size_t count, void* ctx) {
-//  getrandom(buf, count, 0);
+//  if(getrandom(buf, count, 0)==-1) {
+//   printf("getrandom failed: %s\n", strerror(errno));
+//  }
 // }
 import "C"
 

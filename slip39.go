@@ -28,6 +28,12 @@ package slip39
 // }
 import "C"
 
+import (
+	"errors"
+)
+
+var ErrInsufficientSpace = errors.New("insufficient space")
+
 // Generate calls `slip39_generate` C function.
 func Generate(groupThreshold uint8, groups []GroupDescriptor, secret []byte, password string, iterationExponent uint8, randomGenerator *[0]byte) (result, wordsInEachShare int, sharesBuffer []uint16, err error) {
 	groupCount := uint8(len(groups))
@@ -102,6 +108,14 @@ func Combine(mnemonics [][]uint16, passphrase string) (secret []byte, err error)
 	outputSecretDataC := (*C.uint8_t)(&secret[0])
 	outputSecretDataLenC := C.uint32_t(outputSecretDataLen)
 	secretLen, err := C.slip39_combine_1d(mnemonics1DC, mnemonicsWordsC, mnemonicsShardsC, passphraseC, nil, outputSecretDataC, outputSecretDataLenC)
+	if err != nil {
+		return
+	}
+	if secretLen == C.ERROR_INSUFFICIENT_SPACE {
+		err = ErrInsufficientSpace
+
+		return
+	}
 	secret = secret[:secretLen]
 
 	return

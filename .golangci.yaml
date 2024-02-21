@@ -100,3 +100,6 @@ linters:
     - whitespace
     - wrapcheck
     - zerologlint
+linters-settings:
+  nakedret:
+    max-func-lines: 100
